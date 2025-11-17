@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Мой магазин</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#6366f1;--primary-dark:#4f46e5;--secondary:#f59e0b;
+            --accent:#ec4899;--dark:#1f2937;--darker:#111827;--light:#f8fafc;
+            --gray:#6b7280;--success:#10b981;--error:#ef4444;
+            --gradient:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+            --shadow:0 10px 25px -5px rgba(0,0,0,0.1);--shadow-lg:0 25px 50px -12px rgba(0,0,0,0.25);
+            --border-radius:16px;--transition:all 0.3s ease
+        }
+        body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark);background:var(--light)}
+        .header{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid rgba(255,255,255,0.2)}
+        .nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+        .logo{font-size:1.5rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
+        .nav-menu{list-style:none;display:flex;gap:2rem;align-items:center}
+        .nav-link{color:var(--dark);text-decoration:none;font-weight:500;padding:0.5rem 1rem;border-radius:8px;transition:var(--transition)}
+        .nav-link:hover{color:var(--primary)}
+        .admin-link{background:var(--gradient);color:white!important;padding:0.75rem 1.5rem!important;border-radius:8px;font-weight:600}
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        .contacts-hero{text-align:center;padding:8rem 0 4rem}
+        .contacts-hero h1{font-size:3rem;margin-bottom:1rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .contacts-hero p{font-size:1.25rem;color:var(--gray)}
+        .contacts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:3rem 0}
+        .contact-card{background:white;padding:2.5rem 2rem;border-radius:var(--border-radius);box-shadow:var(--shadow);text-align:center;transition:var(--transition);border-top:4px solid var(--primary)}
+        .contact-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+        .contact-icon{font-size:3rem;margin-bottom:1.5rem}
+        .contact-card h3{font-size:1.5rem;margin-bottom:1rem;color:var(--darker)}
+        .contact-card p{color:var(--gray);margin-bottom:1.5rem;font-size:1.1rem}
+        .contact-link{display:inline-block;background:var(--gradient);color:white;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:var(--transition)}
+        .contact-link:hover{transform:translateY(-2px)}
+        .footer{background:var(--darker);color:white;text-align:center;padding:2rem 0;margin-top:4rem}
+        @media (max-width:768px){.contacts-hero h1{font-size:2.5rem}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">МойМагазин</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="products.html" class="nav-link">Товары</a></li>
+                <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                <li><a href="admin-login.html" class="nav-link admin-link">Админка</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contacts-hero">
+            <div class="container">
+                <h1>Мои контакты</h1>
+                <p>Свяжитесь со мной удобным для вас способом</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="contacts-grid" id="contactsGrid">
+                <!-- Контакты загружаются через JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 МойМагазин. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        const storeData = JSON.parse(localStorage.getItem('storeData')) || {
+            contacts: {
+                email: "example@mail.ru",
+                phone: "+7 (999) 999-99-99", 
+                telegram: "@mytelegram",
+                vk: "vk.com/mypage"
+            },
+            adminPassword: "admin123"
+        };
+
+        function loadContacts() {
+            const container = document.getElementById('contactsGrid');
+            if(container && storeData.contacts) {
+                const contacts = storeData.contacts;
+                container.innerHTML = `
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>${contacts.email}</p>
+                        <a href="mailto:${contacts.email}" class="contact-link">Написать</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3>Телефон</h3>
+                        <p>${contacts.phone}</p>
+                        <a href="tel:${contacts.phone}" class="contact-link">Позвонить</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">✈️</div>
+                        <h3>Telegram</h3>
+                        <p>${contacts.telegram}</p>
+                        <a href="https://t.me/${contacts.telegram.replace('@', '')}" class="contact-link">Написать</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">👥</div>
+                        <h3>ВКонтакте</h3>
+                        <p>${contacts.vk}</p>
+                        <a href="https://${contacts.vk}" class="contact-link">Перейти</a>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadContacts();
+            
+            let logoClickCount = 0;
+            document.querySelector('.logo').addEventListener('click', function() {
+                logoClickCount++;
+                if(logoClickCount >= 6) {
+                    window.location.href = 'admin.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

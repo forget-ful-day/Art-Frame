@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары - Мой магазин</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#6366f1;--primary-dark:#4f46e5;--secondary:#f59e0b;
+            --accent:#ec4899;--dark:#1f2937;--darker:#111827;--light:#f8fafc;
+            --gray:#6b7280;--success:#10b981;--error:#ef4444;
+            --gradient:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
+            --shadow:0 10px 25px -5px rgba(0,0,0,0.1);--shadow-lg:0 25px 50px -12px rgba(0,0,0,0.25);
+            --border-radius:16px;--transition:all 0.3s ease
+        }
+        body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark);background:var(--light)}
+        .header{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid rgba(255,255,255,0.2)}
+        .nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+        .logo{font-size:1.5rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
+        .nav-menu{list-style:none;display:flex;gap:2rem;align-items:center}
+        .nav-link{color:var(--dark);text-decoration:none;font-weight:500;padding:0.5rem 1rem;border-radius:8px;transition:var(--transition)}
+        .nav-link:hover{color:var(--primary)}
+        .admin-link{background:var(--gradient);color:white!important;padding:0.75rem 1.5rem!important;border-radius:8px;font-weight:600}
+        .products-hero{text-align:center;padding:8rem 0 4rem;background:var(--gradient);color:white}
+        .products-hero h1{font-size:3rem;margin-bottom:1rem}
+        .products-hero p{font-size:1.25rem;opacity:0.9}
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        .products-main{padding:4rem 0}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+        .product-card{background:white;border-radius:var(--border-radius);padding:1.5rem;box-shadow:var(--shadow);transition:var(--transition);position:relative;overflow:hidden}
+        .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient)}
+        .product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+        .product-image{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:1rem}
+        .product-card h3{color:var(--darker);font-size:1.25rem;margin-bottom:0.5rem}
+        .product-price{font-size:1.5rem;font-weight:700;color:var(--primary);margin:0.5rem 0}
+        .product-description{color:var(--gray);margin-bottom:1rem;line-height:1.6}
+        .btn-buy{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gradient);color:white;padding:0.75rem 1.5rem;border:none;border-radius:8px;cursor:pointer;text-decoration:none;font-weight:600;transition:var(--transition);width:100%;justify-content:center}
+        .btn-buy:hover{transform:translateY(-2px)}
+        .footer{background:var(--darker);color:white;text-align:center;padding:2rem 0;margin-top:4rem}
+        @media (max-width:768px){.products-grid{grid-template-columns:1fr}.products-hero h1{font-size:2.5rem}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">МойМагазин</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="about.html" class="nav-link">О нас</a></li>
+                <li><a href="products.html" class="nav-link">Товары</a></li>
+                <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+                <li><a href="admin-login.html" class="nav-link admin-link">Админка</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products-hero">
+            <div class="container">
+                <h1>Наши товары</h1>
+                <p>Качественные продукты, созданные с заботой о вас</p>
+            </div>
+        </section>
+
+        <section class="products-main">
+            <div class="container">
+                <div class="products-grid" id="allProducts">
+                    <!-- Товары загружаются через JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 МойМагазин. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        const storeData = JSON.parse(localStorage.getItem('storeData')) || {
+            products: [
+                {id:1,name:"Премиум курс",price:14999,image:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",description:"Полный курс по современной веб-разработке.",buyUrl:"#"},
+                {id:2,name:"Дизайн система",price:8999,image:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop",description:"Готовая система дизайна для вашего проекта.",buyUrl:"#"},
+                {id:3,name:"Мобильное приложение",price:19999,image:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",description:"Готовое мобильное приложение с исходным кодом.",buyUrl:"#"},
+                {id:4,name:"UI Kit",price:4999,image:"https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=400&h=300&fit=crop",description:"Набор готовых UI компонентов.",buyUrl:"#"},
+                {id:5,name:"База знаний",price:2999,image:"https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=300&fit=crop",description:"Эксклюзивные материалы и гайды.",buyUrl:"#"},
+                {id:6,name:"Консультация",price:9999,image:"https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=300&fit=crop",description:"Персональная консультация по проекту.",buyUrl:"#"}
+            ],
+            adminPassword: "admin123"
+        };
+
+        function loadProducts() {
+            const container = document.getElementById('allProducts');
+            if(container) {
+                container.innerHTML = storeData.products.map(product => `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <h3>${product.name}</h3>
+                        <div class="product-price">${formatPrice(product.price)}₽</div>
+                        <p class="product-description">${product.description}</p>
+                        <a href="${product.buyUrl}" class="btn-buy">Купить сейчас</a>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('ru-RU').format(price);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            
+            let logoClickCount = 0;
+            document.querySelector('.logo').addEventListener('click', function() {
+                logoClickCount++;
+                if(logoClickCount >= 6) {
+                    window.location.href = 'admin.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
