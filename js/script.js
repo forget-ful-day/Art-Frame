@@ -3,9 +3,9 @@ const products = [
     {
         id: 1,
         name: "Макс",
-        price: 100.000,
+        price: 100000,
         image: "images/product1.jpg",
-        description: "Оно очень умное",
+        description: "Оно очень умное и опасное",
         buyLink: "https://chat.deepseek.com"
     },
     {
