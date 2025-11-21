@@ -5,7 +5,7 @@ const products = [
         name: "Макс",
         price: 100,
         image: "images/product1.jpg",
-        description: "Напишет вам промт",
+        description: "Оно очень умное",
         buyLink: "https://chat.deepseek.com"
     },
     {
