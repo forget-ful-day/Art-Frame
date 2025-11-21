@@ -3,7 +3,7 @@ const products = [
     {
         id: 1,
         name: "Макс",
-        price: 100,
+        price: 100.000,
         image: "images/product1.jpg",
         description: "Оно очень умное",
         buyLink: "https://chat.deepseek.com"
