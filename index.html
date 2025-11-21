@@ -3,127 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой магазин - Главная</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --primary:#6366f1;--primary-dark:#4f46e5;--secondary:#f59e0b;
-            --accent:#ec4899;--dark:#1f2937;--darker:#111827;--light:#f8fafc;
-            --gray:#6b7280;--success:#10b981;--error:#ef4444;
-            --gradient:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);
-            --shadow:0 10px 25px -5px rgba(0,0,0,0.1);--shadow-lg:0 25px 50px -12px rgba(0,0,0,0.25);
-            --border-radius:16px;--transition:all 0.3s ease
-        }
-        body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark);background:var(--light)}
-        .header{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);z-index:1000;border-bottom:1px solid rgba(255,255,255,0.2)}
-        .nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
-        .logo{font-size:1.5rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
-        .nav-menu{list-style:none;display:flex;gap:2rem;align-items:center}
-        .nav-link{color:var(--dark);text-decoration:none;font-weight:500;padding:0.5rem 1rem;border-radius:8px;transition:var(--transition)}
-        .nav-link:hover{color:var(--primary)}
-        .admin-link{background:var(--gradient);color:white!important;padding:0.75rem 1.5rem!important;border-radius:8px;font-weight:600}
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--gradient);color:white;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>')}
-        .hero-content{position:relative;z-index:2;max-width:800px;padding:0 2rem}
-        .hero-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:1.5rem;line-height:1.1}
-        .hero-subtitle{font-size:1.25rem;margin-bottom:2.5rem;opacity:0.9}
-        .cta-button{display:inline-flex;align-items:center;gap:0.75rem;background:rgba(255,255,255,0.2);color:white;padding:1rem 2rem;border-radius:var(--border-radius);text-decoration:none;font-weight:600;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.3);transition:var(--transition)}
-        .cta-button:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px)}
-        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
-        .featured-products{padding:4rem 0}
-        .section-title{font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:3rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-        .product-card{background:white;border-radius:var(--border-radius);padding:1.5rem;box-shadow:var(--shadow);transition:var(--transition);position:relative;overflow:hidden}
-        .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient)}
-        .product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-        .product-image{width:100%;height:200px;object-fit:cover;border-radius:8px;margin-bottom:1rem}
-        .product-card h3{color:var(--darker);font-size:1.25rem;margin-bottom:0.5rem}
-        .product-price{font-size:1.5rem;font-weight:700;color:var(--primary);margin:0.5rem 0}
-        .product-description{color:var(--gray);margin-bottom:1rem;line-height:1.6}
-        .btn-buy{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gradient);color:white;padding:0.75rem 1.5rem;border:none;border-radius:8px;cursor:pointer;text-decoration:none;font-weight:600;transition:var(--transition);width:100%;justify-content:center}
-        .btn-buy:hover{transform:translateY(-2px)}
-        .footer{background:var(--darker);color:white;text-align:center;padding:2rem 0;margin-top:4rem}
-        @media (max-width:768px){.nav-menu{display:none}.products-grid{grid-template-columns:1fr}}
-    </style>
+    <title>Мое Портфолио</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">МойМагазин</div>
+    <header>
+        <nav>
+            <div class="logo">Art-Frame</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Обо мне</a></li>
+                <li><a href="products.html">Товары</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1 class="hero-title">Добро пожаловать в мой магазин!</h1>
-                <p class="hero-subtitle">Я создаю качественные товары с любовью и вниманием к деталям</p>
-                <a href="products.html" class="cta-button">
-                    <span>Смотреть товары</span>
-                </a>
+                <img src="images/profile.jpg" alt="Мое фото" class="profile-img">
+                <h1>Привет, я Валентина</h1>
+                <p class="tagline">[Ваша профессия или сфера деятельности]</p>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2>Обо мне</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Что я делаю</h3>
+                        <p>[Подробное описание вашей деятельности, услуг или продуктов]</p>
+                        
+                        <h3>С кем я работаю</h3>
+                        <p>[Опишите вашу целевую аудиторию или партнеров]</p>
+                        
+                        <h3>Как я работаю</h3>
+                        <p>[Опишите ваш подход, методологию или процесс работы]</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="featured-products">
             <div class="container">
-                <h2 class="section-title">Популярные товары</h2>
-                <div class="products-grid" id="featuredProducts">
-                    <!-- Товары загружаются через JS -->
+                <h2> </h2>
+                <div class="products-grid">
+                    <!-- Здесь будут карточки товаров -->
+                    <div class="product-card">
+
+                        <a href="products.html" class="btn">Смотреть мои товары</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <p>&copy; 2024 МойМагазин. Все права защищены.</p>
+            <p>&copy; 2025 Мое Портфолио. Все права защищены.</p>
         </div>
     </footer>
 
-    <script>
-        // Быстрая загрузка данных
-        const storeData = JSON.parse(localStorage.getItem('storeData')) || {
-            about: {title:"О нас",content:"Я занимаюсь созданием качественных товаров уже более 5 лет."},
-            contacts: {email:"example@mail.ru",phone:"+7 (999) 999-99-99",telegram:"@mytelegram",vk:"vk.com/mypage"},
-            products: [
-                {id:1,name:"Премиум курс",price:14999,image:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",description:"Полный курс по современной веб-разработке.",buyUrl:"#"},
-                {id:2,name:"Дизайн система",price:8999,image:"https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop",description:"Готовая система дизайна для вашего проекта.",buyUrl:"#"},
-                {id:3,name:"Мобильное приложение",price:19999,image:"https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop",description:"Готовое мобильное приложение с исходным кодом.",buyUrl:"#"}
-            ],
-            adminPassword: "admin123"
-        };
-
-        // Секретный доступ
-        let logoClickCount = 0;
-        document.querySelector('.logo').addEventListener('click', function() {
-            logoClickCount++;
-            if(logoClickCount >= 6) {
-                window.location.href = 'admin.html';
-            }
-        });
-
-        // Загрузка товаров
-        function loadProducts() {
-            const container = document.getElementById('featuredProducts');
-            if(container) {
-                container.innerHTML = storeData.products.slice(0,3).map(product => `
-                    <div class="product-card">
-                        <img src="${product.image}" alt="${product.name}" class="product-image">
-                        <h3>${product.name}</h3>
-                        <div class="product-price">${formatPrice(product.price)}₽</div>
-                        <p class="product-description">${product.description}</p>
-                        <a href="${product.buyUrl}" class="btn-buy">Купить сейчас</a>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function formatPrice(price) {
-            return new Intl.NumberFormat('ru-RU').format(price);
-        }
-
-        // Быстрая инициализация
-        document.addEventListener('DOMContentLoaded', loadProducts);
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
